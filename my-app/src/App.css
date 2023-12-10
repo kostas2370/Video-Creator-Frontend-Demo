@@ -1,0 +1,263 @@
+/* MyForm.css */
+.vidtable {
+  border-spacing: 10px;
+  table-layout: fixed;
+  overflow-y: scroll ;
+
+
+}
+
+.back{
+  padding:1px;
+}
+
+
+.buttons-container{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+
+.my-form {
+  min-width: 525px;
+  height: 500px;
+  padding: 50px;
+  background-color: #f9f9f994;
+  border: 0px solid #ddd;
+  border-radius: 5px;
+  align-items: center;  
+  table-layout: fixed;
+
+}
+
+
+.selected_avatar {
+  overflow-y: scroll ;
+
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  color: #555;
+}
+
+select.form-control {
+  /* Adjust styles for select dropdown */
+  height: 40px;
+  font-size: x-large;
+}
+
+textarea.form-control {
+  /* Adjust styles for textarea */
+  min-height: 100px;
+  width: 95%;
+}
+
+.btn-submit {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-submit:hover {
+  background-color: #3584d8;
+}
+
+
+
+body{
+  background-color: rgb(103, 142, 173);
+  height: 50%;
+}
+
+textarea{
+  resize: None;
+}
+
+
+video {
+  width: 90%;
+  height: 40%;
+  object-fit: cover;
+  z-index: -100;
+}
+
+
+.selected-avatar{
+  width: 256px;
+  height: 256px;
+
+}
+
+
+.gpt_answer{
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  color: #555;
+  min-height: 100px;
+  width: 86%;
+
+
+}
+
+.VideoContainer{
+
+background-color: rgb(52, 99, 138);
+margin-bottom: 10%;
+padding-bottom: 5%;
+height: 30%;
+
+}
+
+
+.loading_gif{
+  width: 60%;
+  height: 30%;
+  object-fit: cover;
+  z-index: -100;
+}
+
+.video-btn{
+  display: flex;
+  margin-left: 33%;
+  margin-top: 4%;
+}
+
+.video-btn button{
+  margin-right: 5%;
+
+}
+
+
+.fullvideo{
+  width:50%;
+  background-color: rgb(224, 112, 112);
+  padding:2%;
+
+}
+
+.titletext{
+  font-size: 30px;
+
+}
+
+
+
+.btn-sub {
+  background-color: #5e91c9;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 26px;
+  margin-left: 5%;
+}
+
+.btn-sub:hover {
+  background-color: #3584d8;
+}
+
+
+.scene{
+  background-color: #007bff;
+  margin-bottom: 3%;
+  padding:20px;
+
+}
+
+.sceneaudio{
+  margin-right: 450px;
+  margin-bottom: 12px;
+}
+
+.scenetxt{
+  margin-left: 23%;
+  height: 120px;
+}
+
+
+.container {
+  display: flex;
+  height: 300px; /* Set your desired height */
+  padding-bottom: 5%;
+ 
+}
+
+.side {
+  flex: 1;
+  border-left: 1px solid #cc7474;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+}
+
+.audio {
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 5%;
+}
+
+.text {
+  /* Style for text side */
+}
+
+.buttons {
+  /* Style for buttons side */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btt {
+  padding: 8px 16px;
+  margin: 5px;
+}
+
+.aud{
+
+  order: 1;
+}
+
+.scenetxt{
+  order:2;
+  width: 80%;
+  height: 100px;
+  margin-left: 1%;
+}
+
+.audio_butts{
+  order:3;
+}
+
+li{
+list-style-type: none}
+
