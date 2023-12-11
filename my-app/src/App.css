@@ -2,12 +2,42 @@
 .vidtable {
   border-spacing: 10px;
   table-layout: fixed;
-  overflow-y: scroll ;
 
+  width: 40%;
+  align-items: center;
+  height: 70%;
 
 }
 
-.back{
+
+
+.VideoContainer{
+
+  background-color: rgb(52, 99, 138);
+  margin-bottom: 10%;
+  padding-bottom: 5%;
+  height: 20%;
+  width: 80%;
+  margin-right: 1%;
+  
+  }
+
+  .vires {
+    min-width: 525px;
+    height: 70%;
+    padding: 50px;
+    background-color: #f9f9f994;
+    border: 0px solid #ddd;
+    border-radius: 5px;
+    align-items: center;  
+    table-layout: fixed;
+    margin-top: 50px;
+
+ 
+
+  }
+
+  .back{
   padding:1px;
 }
 
@@ -21,21 +51,19 @@
 
 .my-form {
   min-width: 525px;
-  height: 500px;
+  height: 70%;
   padding: 50px;
   background-color: #f9f9f994;
   border: 0px solid #ddd;
   border-radius: 5px;
   align-items: center;  
   table-layout: fixed;
+  margin-top: 50px;
 
 }
 
 
-.selected_avatar {
-  overflow-y: scroll ;
 
-}
 
 ::-webkit-scrollbar-track {
   background-color: transparent;
@@ -124,14 +152,6 @@ video {
 
 }
 
-.VideoContainer{
-
-background-color: rgb(52, 99, 138);
-margin-bottom: 10%;
-padding-bottom: 5%;
-height: 30%;
-
-}
 
 
 .loading_gif{
@@ -225,9 +245,7 @@ height: 30%;
   padding-top: 5%;
 }
 
-.text {
-  /* Style for text side */
-}
+
 
 .buttons {
   /* Style for buttons side */
@@ -242,10 +260,6 @@ height: 30%;
   margin: 5px;
 }
 
-.aud{
-
-  order: 1;
-}
 
 .scenetxt{
   order:2;
@@ -261,3 +275,73 @@ height: 30%;
 li{
 list-style-type: none}
 
+.sceneimage{
+  width:60%;
+  height: 45%;
+}
+
+.scene_image_btn{
+  padding-top: 5%;
+}
+
+
+.ccsticky-nav {
+  width: 100%;
+  height: 60px; 
+  position: fixed; 
+  top: 0;
+  background: #139ed8;
+  }
+  
+  .ccsticky-nav ul {
+  padding: 20px;
+  margin: 0 auto;
+  list-style: none;
+  text-align: center;
+  }
+  
+  .ccsticky-nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+  }
+  
+  .ccsticky-nav ul li a {
+  padding: 10px 0;
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  }
+  
+  .ccsticky-nav ul li a:hover {
+  color: #34495E;
+  }
+  
+  section {
+  width: 100%;
+  padding: 50px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  height: 1024px;
+  text-align: center;
+  margin-top: 60px;
+  }
+
+
+  .myavatarform {
+    min-width: 525px;
+    height: 400px;
+    padding: 50px;
+    background-color: #f9f9f994;
+    border: 0px solid #ddd;
+    border-radius: 5px;
+    align-items: center;  
+    table-layout: fixed;
+    margin-top: 30%;
+    
+  
+  }
+
+
+ 

@@ -1,0 +1,18 @@
+      <td>
+              <center>
+                <h3>Avatar Creation</h3>
+              </center>
+              <AvatarFormComponent
+                voiceOptions={voiceOptions}
+              ></AvatarFormComponent>
+            </td>
+
+
+
+                <td>
+              <center>
+                <h3 >Previous Results</h3>
+                {""}
+              </center>
+              <VideoResultComponent></VideoResultComponent>
+            </td>

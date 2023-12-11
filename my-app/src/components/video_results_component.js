@@ -15,57 +15,72 @@ const VideoResultComponent = () => {
   }, []);
 
   return (
-    <form className="my-form vidtable">
-      {!video ? (
-        <p></p>
-      ) : (
-        <div>
-          <ul>
-            {video.results.map((vid) => {
-              return (
-                <li key={vid.id}>
-                  <Video vid={vid}></Video>
-                </li>
-              );
-            })}
-          </ul>
-          <div className="buttons-container">
-            {video.previous ? (
-              <button
-                type="submit"
-                className="btn-submit"
-                onClick={async (e) => {
-                  e.preventDefault();
+    <center>
+      <table className="back">
+        <tbody>
+          <tr>
+            <td>
+              <center>
+                <h3>Video Generation</h3>
+              
+              <div className="vires vidtable">
+                {!video ? (
+                  <p></p>
+                ) : (
+                  <div>
+                     <center><ul>
+                      {video.results.map((vid) => {
+                        return (
+                          <li key={vid.id}>
+                           <Video vid={vid}></Video>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    </center>
+                    <div className="buttons-container">
+                      {video.previous ? (
+                        <button
+                          type="submit"
+                          className="btn-submit"
+                          onClick={async (e) => {
+                            e.preventDefault();
 
-                  const response = await axios.get(video.previous);
-                  setVideo(response.data);
-                }}
-              >
-                Previous
-              </button>
-            ) : (
-              <p></p>
-            )}
-            {video.next ? (
-              <button
-                type="submit"
-                className="btn-submit"
-                onClick={async (e) => {
-                  e.preventDefault();
-                  axios.get(video.next).then((response) => {
-                    setVideo(response.data);
-                  });
-                }}
-              >
-                Next
-              </button>
-            ) : (
-              <p></p>
-            )}
-          </div>
-        </div>
-      )}
-    </form>
+                            const response = await axios.get(video.previous);
+                            setVideo(response.data);
+                          }}
+                        >
+                          Previous
+                        </button>
+                      ) : (
+                        <p></p>
+                      )}
+                      {video.next ? (
+                        <button
+                          type="submit"
+                          className="btn-submit"
+                          onClick={async (e) => {
+                            e.preventDefault();
+                            axios.get(video.next).then((response) => {
+                              setVideo(response.data);
+                            });
+                          }}
+                        >
+                          Next
+                        </button>
+                      ) : (
+                        <p></p>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+              </center>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </center>
   );
 };
 

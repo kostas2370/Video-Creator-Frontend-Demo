@@ -1,7 +1,6 @@
 import axios from "axios";
 import React from "react";
 import { API_BASE_URL } from "./apicalls";
-import { Redirect, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 function Video({ vid }) {
   

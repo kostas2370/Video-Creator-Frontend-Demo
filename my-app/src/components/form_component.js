@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import axios from "axios";
+import { request } from "./apicalls";
 
-const FormComponent = (props) => {
+const FormComponent = () => {
   const [formData, setFormData] = useState({
     template_id: "",
     title: "",
@@ -17,6 +18,21 @@ const FormComponent = (props) => {
 
   const [loading, setLoading] = useState(false);
   const [selectedAvatar, setSectedAvatar] = useState(null);
+  const [options, setOptions] = useState(null);
+  const [avatar, setAvatar] = useState(null);
+
+  useEffect(() => {
+    const fetchOptions = async () => {
+      const opti = await request("templates/");
+      setOptions(opti);
+      const avatat_options = await request("avatars/");
+      setAvatar(avatat_options);
+     
+    };
+
+    fetchOptions();
+  }, []);
+
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -64,6 +80,7 @@ const FormComponent = (props) => {
   
 
   return (
+    
     <form onSubmit={handleSubmit} className="my-form selected_avatar">
       <div className="form-group">
         <label htmlFor="title">Title:</label>
@@ -78,14 +95,14 @@ const FormComponent = (props) => {
       </div>
 
       <label htmlFor="category">Category:</label>
-      {!props.options ? (
+      {!options ? (
         <p>Loading...</p>
       ) : (
         <select id="category" onChange={handleInputChange} name="template_id">
           <option key="Select a category" value="">
             Select a category
           </option>
-          {props.options.map((option) => (
+          {options.map((option) => (
             <option key={option.title} value={parseInt(option.id)}>
               {option.title}
             </option>
@@ -95,7 +112,7 @@ const FormComponent = (props) => {
 
       <div className="form-group">
         <label htmlFor="avatar">Avatar:</label>
-        {!props.avatar ? (
+        {!avatar ? (
           <p>Loading...</p>
         ) : (
           <select
@@ -106,7 +123,7 @@ const FormComponent = (props) => {
             <option key="No avatar" value="">
               No Avatar
             </option>
-            {props.avatar.map((avatar) => (
+            {avatar.map((avatar) => (
               <option key={avatar.name} value={parseInt(avatar.id)}>
                 {avatar.name}
               </option>
@@ -145,7 +162,7 @@ const FormComponent = (props) => {
       ) : (
         <ul>
           
-            {props.avatar.map((item, index) => {
+            {avatar.map((item, index) => {
               if (formData.avatar_selection === item.id.toString()) {
                 return (
                   
@@ -153,10 +170,12 @@ const FormComponent = (props) => {
                     <p>Avatar with id :{item.id}</p>
 
                     <img src ={item.file} className="selected-avatar" alt="Avatar"/>
-                    <audio controls>
+                  
+                  
+                  </div>
+                  <audio controls>
                       <source src={item.voice.sample} />
                     </audio>
-                  </div>
                   </center>
                 );
               }
@@ -180,6 +199,7 @@ const FormComponent = (props) => {
       )}
 
     </form>
+  
   );
 };
 

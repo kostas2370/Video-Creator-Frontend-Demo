@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { request } from "./apicalls";
-import Video from "./video";
 import axios from "axios";
 import { API_BASE_URL } from "./apicalls";
 import Scene from "./scene";
