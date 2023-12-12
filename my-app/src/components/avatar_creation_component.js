@@ -13,11 +13,13 @@ const AvatarFormComponent = () => {
 
   useEffect(() => {
     const fetchvoiceOptions = async () => {
-      const voices = await request("voices/");
-      setVoiceOptions(voices);
+      const opti = await request("voices/");
+      setVoiceOptions(opti);
+   
     };
+
     fetchvoiceOptions();
-  });
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();

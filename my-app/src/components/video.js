@@ -8,7 +8,7 @@ function Video({ vid }) {
   return (
     <div className="VideoContainer">
       <center>
-        <h3>{vid.title}</h3>
+        <h3 className="vid_title">{vid.title}</h3>
         {vid.status === "RENDERING" ? (
           <img
             src="https://cdn.pixabay.com/animation/2022/07/29/03/42/03-42-18-223_512.gif"
