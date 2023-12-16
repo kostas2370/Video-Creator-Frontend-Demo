@@ -33,7 +33,10 @@ const VideoResultComponent = () => {
                         return (
                           <li key={vid.id}>
                            <Video vid={vid}></Video>
+                          
                           </li>
+                     
+                          
                         );
                       })}
                     </ul>

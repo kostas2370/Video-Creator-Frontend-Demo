@@ -373,3 +373,9 @@ list-style-type: none}
     color: white;
     font-size: 20px;
   }
+
+select{
+  height: 30px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}

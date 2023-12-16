@@ -1,20 +1,18 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { request } from "./apicalls";
 
 const FormComponent = () => {
   const [formData, setFormData] = useState({
-    template_id: "",
+    template_id: "general",
     title: "",
-    avatar_selection: "",
+    avatar_selection: "no_avatar",
     message: "",
-    avatar: "",
+    target_audience:"",
     images: "webscrap",
-    gpt_model:"gpt-4"
-
-   
+    gpt_model: "gpt-4",
+    style: "natural",
   });
-
 
   const [loading, setLoading] = useState(false);
   const [selectedAvatar, setSectedAvatar] = useState(null);
@@ -27,26 +25,21 @@ const FormComponent = () => {
       setOptions(opti);
       const avatat_options = await request("avatars/");
       setAvatar(avatat_options);
-     
     };
 
     fetchOptions();
   }, []);
 
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-  
 
     setFormData({ ...formData, [name]: value });
 
-    if (name==="avatar_selection"){
-      setSectedAvatar(value)
-
+    if (name === "avatar_selection") {
+      setSectedAvatar(value);
     }
   };
 
-  
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!formData.title) {
@@ -65,22 +58,19 @@ const FormComponent = () => {
     }
     formData.avatar = false;
 
-    if (formData.avatar_selection) {
-      formData.avatar = true;
-    }
-
+   
     setLoading(true);
-    alert("Thank you for submiting the prompt, if everything is fine , you can see the video in video Results soon")
-    event.target.reset()
+    alert(
+      "Thank you for submiting the prompt, if everything is fine , you can see the video in video Results soon"
+    );
+    event.target.reset();
 
-    axios.post("http://localhost:8000/api/test/", formData).then((response) => {
-    });
+    axios
+      .post("http://localhost:8000/api/test/", formData)
+      .then((response) => {});
   };
 
-  
-
   return (
-    
     <form onSubmit={handleSubmit} className="my-form selected_avatar">
       <div className="form-group">
         <label htmlFor="title">Title:</label>
@@ -93,6 +83,19 @@ const FormComponent = () => {
           className="form-control"
         />
       </div>
+
+      <div className="form-group">
+        <label htmlFor="target_audience">Target Audience:</label>
+        <input
+          type="text"
+          id="target_audience"
+          name="target_audience"
+          value={formData.target_audience}
+          onChange={handleInputChange}
+          className="form-control"
+        />
+      </div>
+      
 
       <label htmlFor="category">Category:</label>
       {!options ? (
@@ -120,7 +123,7 @@ const FormComponent = () => {
             onChange={handleInputChange}
             name="avatar_selection"
           >
-            <option key="No avatar" value="">
+            <option key="No avatar" value="no_avatar">
               No Avatar
             </option>
             {avatar.map((avatar) => (
@@ -134,16 +137,22 @@ const FormComponent = () => {
       <label htmlFor="images">Image Mode:</label>
 
       <select id="images" onChange={handleInputChange} name="images">
-       
-
-            <option key="webscrap" value="webscrap">
-              webscrap
-            </option>
-            <option key="AI" value="AI">
-              AI
-            </option>
-        </select>
-
+        <option key="webscrap" value="webscrap">
+          webscrap
+        </option>
+        <option key="AI" value="AI">
+          AI
+        </option>
+      </select>
+      <label htmlFor="style">Image Style</label>   
+      <select id="style" onChange={handleInputChange} name="style">
+        <option key="vivid" value="vivid">
+        vivid
+        </option>
+        <option key="natural" value="natural">
+          natural
+        </option>
+      </select>
 
       <div className="form-group">
         <label htmlFor="message">Message:</label>
@@ -156,36 +165,34 @@ const FormComponent = () => {
         ></textarea>
       </div>
 
-
       {!selectedAvatar ? (
         <p></p>
       ) : (
         <ul>
-          
-            {avatar.map((item, index) => {
-              if (formData.avatar_selection === item.id.toString()) {
-                return (
-                  
-                  <center><div>
+          {avatar.map((item, index) => {
+            if (formData.avatar_selection === item.id.toString()) {
+              return (
+                <center>
+                  <div>
                     <p>Avatar with id :{item.id}</p>
 
-                    <img src ={item.file} className="selected-avatar" alt="Avatar"/>
-                  
-                  
+                    <img
+                      src={item.file}
+                      className="selected-avatar"
+                      alt="Avatar"
+                    />
                   </div>
                   <audio controls>
-                      <source src={item.voice.sample} />
-                    </audio>
-                  </center>
-                );
-              }
-              return null
-            })}
-         
+                    <source src={item.voice.sample} />
+                  </audio>
+                </center>
+              );
+            }
+            return null;
+          })}
         </ul>
       )}
 
-        
       {!loading ? (
         <center>
           <button type="submit" className="btn-submit">
@@ -197,9 +204,7 @@ const FormComponent = () => {
           <p>Waiting</p>
         </center>
       )}
-
     </form>
-  
   );
 };
 
