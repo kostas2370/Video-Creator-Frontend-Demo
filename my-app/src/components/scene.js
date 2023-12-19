@@ -19,8 +19,9 @@ function Scene({ scene }) {
         text: sceneText,
       })
       .then((response) => {
-        alert("Scene updated sucessfuly");
-        window.location.reload(false);
+        alert("Scene updated sucessfully , you can reload the page when you want");
+        setSceneText(response.text)
+        setLoading(false)
       });
   };
 
@@ -32,7 +33,7 @@ function Scene({ scene }) {
     axios
       .delete(API_BASE_URL + "/scene_image/" + scene.scene_image.id + "/")
       .then((response) => {
-        alert("Scene Image deleteds sucessfuly");
+        alert("Scene Image deleted sucessfuly");
         window.location.reload(false);
       });
   };
@@ -51,7 +52,7 @@ function Scene({ scene }) {
     axios
       .post(url, formData)
       .then((response) => {
-        alert("Scene Image Changed sucessfuly");
+        alert("Scene Image Changed successfuly ");
         window.location.reload(false);
       });
   };
@@ -68,7 +69,8 @@ function Scene({ scene }) {
       })
       .then((response) => {
         alert("Scene updated sucessfuly");
-        window.location.reload(false);
+        setSceneText(response.text)
+        setLoading(false)
       });
   };
 
