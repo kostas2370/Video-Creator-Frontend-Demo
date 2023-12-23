@@ -67,6 +67,7 @@
   table-layout: fixed;
   margin-top: 50px;
   box-shadow: black 0px 0px 15px;
+  margin-bottom: 50px;
 
 
 }
@@ -188,7 +189,13 @@ video {
 .fullvideo{
   width:50%;
   background-color: rgb(224, 112, 112);
-  padding:2%;
+  padding-top:3%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding-left: 3%;  
+
+  padding-right: 3%;
+
 
 }
 
@@ -265,6 +272,7 @@ video {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  z-index: 15;
 }
 
 .btt {
@@ -289,7 +297,8 @@ list-style-type: none}
 
 .sceneimage{
   width:60%;
-  height: 45%;
+  height: 150px;
+  z-index: 1;
 }
 
 .scene_image_btn{
@@ -311,7 +320,7 @@ list-style-type: none}
   padding: 20px;
   margin: 0 auto;
   list-style: none;
-  text-align: center;
+  text-align: left;
   }
   
   .ccsticky-nav ul li {
@@ -378,4 +387,11 @@ select{
   height: 30px;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+
+
+.fullvidform{
+  margin-bottom: 5%;
+  margin-top: 1%;
+  padding: 1%;
 }

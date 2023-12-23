@@ -5,7 +5,7 @@ import axios from "axios";
 function Scene({ scene }) {
   const [sceneText, setSceneText] = useState("");
   const [loading, setLoading] = useState(false);
-  const [file, setFile] = useState("")
+  const [file, setFile] = useState("");
 
   useEffect(() => {
     setSceneText(scene.text);
@@ -19,13 +19,13 @@ function Scene({ scene }) {
         text: sceneText,
       })
       .then((response) => {
-        alert("Scene updated sucessfully , you can reload the page when you want");
-        setSceneText(response.text)
-        setLoading(false)
+        alert(
+          "Scene updated sucessfully , you can reload the page when you want"
+        );
+        setSceneText(response.text);
+        setLoading(false);
       });
   };
-
-
 
   const delete_scene_image = (event) => {
     event.preventDefault();
@@ -43,22 +43,16 @@ function Scene({ scene }) {
     const formData = new FormData();
     formData.append("image", file);
 
-    let url = API_BASE_URL + "/change_image/?scene_id=" + scene.id
-    if (scene.scene_image.id){
-      url = url+"&scene_image="+scene.scene_image.id
-
+    let url = API_BASE_URL + "/change_image/?scene_id=" + scene.id;
+    if (scene.scene_image.id) {
+      url = url + "&scene_image=" + scene.scene_image.id;
     }
     setLoading(true);
-    axios
-      .post(url, formData)
-      .then((response) => {
-        alert("Scene Image Changed successfuly ");
-        window.location.reload(false);
-      });
+    axios.post(url, formData).then((response) => {
+      alert("Scene Image Changed successfuly ");
+      window.location.reload(false);
+    });
   };
-
-
-
 
   const generate_scene_text = (event) => {
     event.preventDefault();
@@ -69,8 +63,8 @@ function Scene({ scene }) {
       })
       .then((response) => {
         alert("Scene updated sucessfuly");
-        setSceneText(response.text)
-        setLoading(false)
+        setSceneText(response.text);
+        setLoading(false);
       });
   };
 
@@ -101,14 +95,34 @@ function Scene({ scene }) {
       </div>
       <div class="side text">
         <div class="text-content">
-          <img
-            src={MEDIA_URL + scene.scene_image.file}
-            className="sceneimage"
-          ></img>
-          <input type="file" onChange={(e) =>(setFile(e.target.files[0]))}></input>
+          {scene.scene_image.file.includes("mp4") ? (
+            
+              <video
+                controls
+                src={MEDIA_URL + scene.scene_image.file}
+                className="sceneimage"
+              ></video>
+            
+          ) : (
+            
+              <img
+                src={MEDIA_URL + scene.scene_image.file}
+                className="sceneimage"
+              ></img>
+            
+          )}
+       
+          <input
+            type="file"
+            onChange={(e) => setFile(e.target.files[0])}
+          ></input>
           <div className="scene_image_btn">
-            <button className="btt btn-submit" onClick={change_scene_image}>Change</button>
-            <button className="btt btn-submit" onClick={delete_scene_image}>Delete</button>
+            <button className="btt btn-submit" onClick={change_scene_image}>
+              Change
+            </button>
+            <button className="btt btn-submit" onClick={delete_scene_image}>
+              Delete
+            </button>
           </div>
         </div>
       </div>

@@ -47,11 +47,6 @@ const FormComponent = () => {
       return;
     }
 
-    if (!formData.template_id) {
-      alert("You must add category");
-      return;
-    }
-
     if (!formData.message) {
       alert("You must add a message");
       return;
@@ -66,7 +61,7 @@ const FormComponent = () => {
     event.target.reset();
 
     axios
-      .post("http://localhost:8000/api/test/", formData)
+      .post("http://localhost:8000/api/generate/", formData)
       .then((response) => {});
   };
 
@@ -85,7 +80,7 @@ const FormComponent = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="target_audience">Target Audience:</label>
+        <label htmlFor="target_audience" placeholder="text">Target Audience:</label>
         <input
           type="text"
           id="target_audience"
@@ -97,7 +92,7 @@ const FormComponent = () => {
       </div>
       
 
-      <label htmlFor="category">Category:</label>
+      <label htmlFor="category">Genre:</label>
       {!options ? (
         <p>Loading...</p>
       ) : (
@@ -143,8 +138,9 @@ const FormComponent = () => {
         <option key="AI" value="AI">
           AI
         </option>
+
       </select>
-      <label htmlFor="style">Image Style</label>   
+      {formData.images == "AI" ? (<><label htmlFor="style">Image Style</label>   
       <select id="style" onChange={handleInputChange} name="style">
         <option key="vivid" value="vivid">
         vivid
@@ -152,7 +148,8 @@ const FormComponent = () => {
         <option key="natural" value="natural">
           natural
         </option>
-      </select>
+      </select></>) : (<></>)}
+      
 
       <div className="form-group">
         <label htmlFor="message">Message:</label>

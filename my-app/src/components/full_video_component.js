@@ -5,7 +5,6 @@ import axios from "axios";
 import { API_BASE_URL } from "./apicalls";
 import Scene from "./scene";
 
-
 const FullVideoComponent = (props) => {
   const { video } = useParams();
   const [currentvideo, setCurrentvideo] = useState("");
@@ -29,33 +28,33 @@ const FullVideoComponent = (props) => {
 
   return (
     <div className="FullvideoContainer">
-     
-        <center>
-          {!currentvideo ? (
-            <p></p>
-          ) : (
-            <div className="fullvideo">
-              <h2>Title : </h2>
-              <form onSubmit={update_title}>
-                <input
-                  className="titletext"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                />
+      <center>
+        {!currentvideo ? (
+          <p></p>
+        ) : (
+          <div className="fullvideo">
+            <form onSubmit={update_title} className="fullvidform">
+              <input
+                className="titletext"
+                value={title}
+                name="title"
+                onChange={(e) => setTitle(e.target.value)}
+              />
 
-                <button className="btn-sub" type="submit">
-                  update
-                </button>
-              </form>
-              <div className="scene_container">
-                {currentvideo.scenes.map((scene) => {
-                  return <Scene scene ={scene}/>;
-                })}
-              </div>
+              <button className="btn-sub" type="submit">
+                Update
+              </button>
+              <button className="btn-sub">Regenerate</button>
+              <button className="btn-sub">Render</button>
+            </form>
+            <div className="scene_container">
+              {currentvideo.scenes.map((scene) => {
+                return <Scene scene={scene} />;
+              })}
             </div>
-          )}
-        </center>
-      
+          </div>
+        )}
+      </center>
     </div>
   );
 };
