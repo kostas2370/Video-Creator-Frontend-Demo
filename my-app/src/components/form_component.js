@@ -18,6 +18,8 @@ const FormComponent = () => {
   const [selectedAvatar, setSectedAvatar] = useState(null);
   const [options, setOptions] = useState(null);
   const [avatar, setAvatar] = useState(null);
+  const [hide, setHide] = useState(true);
+
 
   useEffect(() => {
     const fetchOptions = async () => {
@@ -62,8 +64,18 @@ const FormComponent = () => {
 
     axios
       .post("http://localhost:8000/api/generate/", formData)
-      .then((response) => {});
+      .then((response) => {setLoading(false); alert("You can check your video in The videos tab")});
   };
+
+  const hideClick = (event) => {
+    event.preventDefault();
+    if (hide) {
+      setHide(false)
+    }else{
+      setHide(true)
+    }
+
+  }
 
   return (
     <form onSubmit={handleSubmit} className="my-form selected_avatar">
@@ -78,8 +90,21 @@ const FormComponent = () => {
           className="form-control"
         />
       </div>
-
       <div className="form-group">
+        <label htmlFor="message">Message:</label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleInputChange}
+          className="form-control"
+        ></textarea>
+      </div>
+      <center><button onClick={hideClick} className="hidebutt">Advanced Settings</button></center>
+
+      <hr></hr>
+      {hide ? (<></>) : (<>
+        <div className="form-group">
         <label htmlFor="target_audience" placeholder="text">Target Audience:</label>
         <input
           type="text"
@@ -93,21 +118,14 @@ const FormComponent = () => {
       
 
       <label htmlFor="category">Genre:</label>
-      {!options ? (
-        <p>Loading...</p>
-      ) : (
-        <select id="category" onChange={handleInputChange} name="template_id">
-          <option key="Select a category" value="">
-            Select a category
-          </option>
-          {options.map((option) => (
-            <option key={option.title} value={parseInt(option.id)}>
-              {option.title}
-            </option>
-          ))}
-        </select>
-      )}
-
+      <input
+          type="text"
+          id="target_audience"
+          name="target_audience"
+          value={formData.target_audience}
+          onChange={handleInputChange}
+          className="form-control"
+        />
       <div className="form-group">
         <label htmlFor="avatar">Avatar:</label>
         {!avatar ? (
@@ -150,17 +168,11 @@ const FormComponent = () => {
         </option>
       </select></>) : (<></>)}
       
+      </>)}
+      
+      
 
-      <div className="form-group">
-        <label htmlFor="message">Message:</label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleInputChange}
-          className="form-control"
-        ></textarea>
-      </div>
+      
 
       {!selectedAvatar ? (
         <p></p>

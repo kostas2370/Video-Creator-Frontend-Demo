@@ -377,6 +377,8 @@ list-style-type: none}
     box-shadow: #ddd 0px 2px 1px;
   }
 
+
+
   .VideoContainer h3{
     font-family: monospace;
     color: white;
@@ -395,3 +397,28 @@ select{
   margin-top: 1%;
   padding: 1%;
 }
+
+
+.viddie-banner{
+ 
+  margin-top: -30px;
+  font-family: monospace;
+  font-size: 30px;
+  color:white;
+}
+
+
+.viddie-banner span{
+
+  color: purple;
+}
+
+.hidebutt{
+  background-color: #c0ccdc;
+  border: none;
+}
+.hidebutt:hover{
+  background-color: lightblue;
+  border: none;
+}
+
