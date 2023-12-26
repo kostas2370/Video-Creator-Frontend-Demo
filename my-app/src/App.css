@@ -422,3 +422,24 @@ select{
   border: none;
 }
 
+
+.full-video-butts{
+align-items: center;
+ padding-bottom: 40px;
+}
+
+
+.title-label{
+  font-size: 34px;
+  margin-right: 30px;
+}
+
+
+.avatar-select-form{
+  margin-top: -50px;
+}
+
+.vidcontform{
+  margin-top: 100px;
+  margin-bottom: -93px;
+}
