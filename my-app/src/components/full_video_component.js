@@ -104,7 +104,8 @@ const FullVideoComponent = (props) => {
                   className="btn-sub"
                   onClick={async (e) => {
                     e.preventDefault();
-                    axios.post(API_BASE_URL + "/render/?video_id=" + video);
+                    axios.post(API_BASE_URL + "/render/?video_id=" + video)
+                    ;
                   }}
                 >
                   Render

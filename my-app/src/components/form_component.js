@@ -12,19 +12,18 @@ const FormComponent = () => {
     images: "webscrap",
     gpt_model: "gpt-4",
     style: "natural",
+    music:""
   });
 
   const [loading, setLoading] = useState(false);
   const [selectedAvatar, setSectedAvatar] = useState(null);
-  const [options, setOptions] = useState(null);
   const [avatar, setAvatar] = useState(null);
-  const [hide, setHide] = useState(true);
+  const [hide, setHide] = useState(false);
 
 
   useEffect(() => {
     const fetchOptions = async () => {
-      const opti = await request("templates/");
-      setOptions(opti);
+     
       const avatat_options = await request("avatars/");
       setAvatar(avatat_options);
     };
@@ -91,7 +90,7 @@ const FormComponent = () => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="message">Message:</label>
+        <label htmlFor="message">Prompt:</label>
         <textarea
           id="message"
           name="message"
@@ -100,12 +99,11 @@ const FormComponent = () => {
           className="form-control"
         ></textarea>
       </div>
-      <center><button onClick={hideClick} className="hidebutt">Advanced Settings</button></center>
 
       <hr></hr>
       {hide ? (<></>) : (<>
         <div className="form-group">
-        <label htmlFor="target_audience" placeholder="text">Target Audience:</label>
+        <label htmlFor="target_audience" placeholder="text">Audience:</label>
         <input
           type="text"
           id="target_audience"
@@ -120,9 +118,9 @@ const FormComponent = () => {
       <label htmlFor="category">Genre:</label>
       <input
           type="text"
-          id="target_audience"
-          name="target_audience"
-          value={formData.target_audience}
+          id="category"
+          name="category"
+
           onChange={handleInputChange}
           className="form-control"
         />
@@ -151,10 +149,10 @@ const FormComponent = () => {
 
       <select id="images" onChange={handleInputChange} name="images">
         <option key="webscrap" value="webscrap">
-          webscrap
+          Web
         </option>
         <option key="AI" value="AI">
-          AI
+          DALL E
         </option>
 
       </select>
@@ -168,10 +166,21 @@ const FormComponent = () => {
         </option>
       </select></>) : (<></>)}
       
+      
       </>)}
       
       
-
+      <div className="form-group">
+        <label htmlFor="music" placeholder="text">Music:</label>
+        <input
+          type="text"
+          id="music"
+          name="music"
+          value={formData.music}
+          onChange={handleInputChange}
+          className="form-control"
+        />
+      </div>
       
 
       {!selectedAvatar ? (
@@ -205,7 +214,7 @@ const FormComponent = () => {
       {!loading ? (
         <center>
           <button type="submit" className="btn-submit">
-            Submit
+            Create Video
           </button>
         </center>
       ) : (
