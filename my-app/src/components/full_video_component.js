@@ -10,6 +10,7 @@ const FullVideoComponent = (props) => {
   const [currentvideo, setCurrentvideo] = useState("");
   const [avatar, setAvatar] = useState(null);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const [title, setTitle] = useState("");
 
@@ -90,27 +91,35 @@ const FullVideoComponent = (props) => {
                   Update
                 </button>
               </form>
-              </div>
-              <div className="fullvideo">
+            </div>
+            <div className="fullvideo">
               <div className="scene_container">
                 {currentvideo.scenes.map((scene) => {
                   return <Scene scene={scene} />;
                 })}
               </div>
-
-              <div className="full-video-butts">
-                <button className="btn-sub">Regenerate</button>
-                <button
-                  className="btn-sub"
-                  onClick={async (e) => {
-                    e.preventDefault();
-                    axios.post(API_BASE_URL + "/render/?video_id=" + video)
-                    ;
-                  }}
-                >
-                  Render
-                </button>
-              </div>
+              {loading ? (
+                <>Loading...</>
+              ) : (
+                <div className="full-video-butts">
+                  <button className="btn-sub">Regenerate</button>
+                  <button
+                    className="btn-sub"
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      setLoading(true);
+                      axios
+                        .post(API_BASE_URL + "/render/?video_id=" + video)
+                        .then((response) => {
+                          setLoading(false);
+                          alert("Video got rendered Successfuly");
+                        });
+                    }}
+                  >
+                    Render
+                  </button>
+                </div>
+              )}
             </div>
           </>
         )}

@@ -4,8 +4,7 @@ import { request } from "./apicalls";
 
 const FormComponent = () => {
   const [formData, setFormData] = useState({
-    template_id: "general",
-    title: "",
+    template_id: "",
     avatar_selection: "no_avatar",
     message: "",
     target_audience:"",
@@ -43,11 +42,7 @@ const FormComponent = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!formData.title) {
-      alert("You must add title");
-      return;
-    }
-
+ 
     if (!formData.message) {
       alert("You must add a message");
       return;
@@ -78,17 +73,7 @@ const FormComponent = () => {
 
   return (
     <form onSubmit={handleSubmit} className="my-form selected_avatar">
-      <div className="form-group">
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          value={formData.title}
-          onChange={handleInputChange}
-          className="form-control"
-        />
-      </div>
+ 
       <div className="form-group">
         <label htmlFor="message">Prompt:</label>
         <textarea
@@ -115,11 +100,11 @@ const FormComponent = () => {
       </div>
       
 
-      <label htmlFor="category">Genre:</label>
+      <label htmlFor="template_id">Genre:</label>
       <input
           type="text"
-          id="category"
-          name="category"
+          id="template_id"
+          name="template_id"
 
           onChange={handleInputChange}
           className="form-control"
@@ -156,7 +141,7 @@ const FormComponent = () => {
         </option>
 
       </select>
-      {formData.images == "AI" ? (<><label htmlFor="style">Image Style</label>   
+      {formData.images === "AI" ? (<><label htmlFor="style">Image Style</label>   
       <select id="style" onChange={handleInputChange} name="style">
         <option key="vivid" value="vivid">
         vivid
