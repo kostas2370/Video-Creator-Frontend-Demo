@@ -1,3 +1,14 @@
+# Basic UI :
+
+![image](https://github.com/kostas2370/ViddieDEMO/assets/96636678/4b081f3e-5f0a-4fb5-9bc0-e02951b905d7)
+
+![image](https://github.com/kostas2370/ViddieDEMO/assets/96636678/223c1e31-6e72-42e4-84d8-a64943e91bb4)
+
+![image](https://github.com/kostas2370/ViddieDEMO/assets/96636678/a250a00d-0d99-4181-8223-78eff414d2c3)
+
+![image](https://github.com/kostas2370/ViddieDEMO/assets/96636678/8c1b44b3-545d-47f6-aa28-afec257b4234)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
