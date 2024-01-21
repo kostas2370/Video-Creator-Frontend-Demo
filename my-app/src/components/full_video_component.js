@@ -102,7 +102,21 @@ const FullVideoComponent = (props) => {
                 <>Loading...</>
               ) : (
                 <div className="full-video-butts">
-                  <button className="btn-sub">Regenerate</button>
+                  <button
+                    className="btn-sub"
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      setLoading(true);
+                      axios
+                        .patch(API_BASE_URL + "/regenerate/?video_id=" + video)
+                        .then((response) => {
+                          setLoading(false);
+                          alert("Video got regenerated Successfuly");
+                        });
+                    }}
+                  >
+                    Regenerate
+                  </button>
                   <button
                     className="btn-sub"
                     onClick={async (e) => {

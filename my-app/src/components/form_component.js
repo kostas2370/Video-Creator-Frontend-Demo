@@ -54,7 +54,6 @@ const FormComponent = () => {
     alert(
       "Thank you for submiting the prompt, if everything is fine , you can see the video in video Results soon"
     );
-    event.target.reset();
 
     axios
       .post("http://localhost:8000/api/generate/", formData)
@@ -133,10 +132,10 @@ const FormComponent = () => {
       <label htmlFor="images">Image Mode:</label>
 
       <select id="images" onChange={handleInputChange} name="images">
-        <option key="webscrap" value="webscrap">
+        <option key="WEB" value="WEB">
           Web
         </option>
-        <option key="AI" value="AI">
+        <option key="DALL-E" value="DALL-E">
           DALL E
         </option>
 
