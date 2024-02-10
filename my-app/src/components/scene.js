@@ -95,7 +95,7 @@ function Scene({ scene }) {
       </div>
       <div className="side text">
         <div className="text-content">
-          {scene.scene_image && scene.scene_image.file.includes("mp4") ? (
+          {scene.scene_image && scene.scene_image.file && scene.scene_image.file.includes("mp4") ? (
             
               <video
                 controls

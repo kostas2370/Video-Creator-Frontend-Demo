@@ -5,7 +5,7 @@ import { request } from "./apicalls";
 const AvatarFormComponent = () => {
   const [name, setName] = useState("");
   const [voice, setVoice] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("male");
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [tempImageurl, setTempImageurl] = useState(null);
@@ -81,7 +81,7 @@ const AvatarFormComponent = () => {
                   </option>
                   {voiceOptions.map((option) => (
                     <option key={option.id} value={option.id}>
-                      {option.id}
+                      {option.path}
                     </option>
                   ))}
                 </select>

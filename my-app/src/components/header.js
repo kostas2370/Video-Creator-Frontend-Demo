@@ -7,7 +7,7 @@ export const Header = () => {
       <li><a href={url + "/"}>Generation</a></li>
       <li><a href={url + "/avatar_creation"}>Narrator</a></li>
       <li><a href={url + "/video_results"}>Videos</a></li>
-      <center><h2 className="viddie-banner"><span>VIDDIE:</span> The AI video Creator</h2>  </center>
+      <center><h2 className="viddie-banner"> The AI video Creator</h2>  </center>
 
     </ul>
   </nav>
