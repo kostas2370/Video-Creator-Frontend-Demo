@@ -8,7 +8,10 @@ function Scene({ scene }) {
   const [file, setFile] = useState("");
 
   useEffect(() => {
-    setSceneText(scene.text);
+    if (scene.text){
+      setSceneText(scene.text);
+    }
+    
   }, []);
 
   const update_scene_text = (event) => {
@@ -43,9 +46,9 @@ function Scene({ scene }) {
     const formData = new FormData();
     formData.append("image", file);
 
-    let url = API_BASE_URL + "/change_image/?scene_id=" + scene.id;
+    let url = API_BASE_URL + + "/scene/" + scene.id + "/";
     if (scene.scene_image.id) {
-      url = url + "&scene_image=" + scene.scene_image.id;
+      url = url + "?scene_image=" + scene.scene_image.id;
     }
     setLoading(true);
     axios.post(url, formData).then((response) => {

@@ -108,7 +108,7 @@ const FullVideoComponent = (props) => {
                       e.preventDefault();
                       setLoading(true);
                       axios
-                        .patch(API_BASE_URL + "/regenerate/?video_id=" + video)
+                        .get(API_BASE_URL + "/video/" + video + "/video_regenerate/")
                         .then((response) => {
                           setLoading(false);
                           alert("Video got regenerated Successfuly");
@@ -123,7 +123,7 @@ const FullVideoComponent = (props) => {
                       e.preventDefault();
                       setLoading(true);
                       axios
-                        .post(API_BASE_URL + "/render/?video_id=" + video)
+                        .get(API_BASE_URL + "/video/" + video + "/render_video/")
                         .then((response) => {
                           setLoading(false);
                           alert("Video got rendered Successfuly");

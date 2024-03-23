@@ -54,7 +54,7 @@ function Video({ vid }) {
               onClick={async (e) => {
                 e.preventDefault();
                 vid.status = "RENDERING";
-                axios.post(API_BASE_URL + "/render/?video_id=" + vid.id);
+                axios.get(API_BASE_URL + "/video/" + vid.id + "/render_video/");
               }}
             >
               Render
