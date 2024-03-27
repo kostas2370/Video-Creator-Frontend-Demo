@@ -71,6 +71,7 @@ const FormComponent = () => {
   }
 
   return (
+    <>
     <form onSubmit={handleSubmit} className="my-form selected_avatar">
  
       <div className="form-group">
@@ -207,6 +208,7 @@ const FormComponent = () => {
         </center>
       )}
     </form>
+    </>
   );
 };
 

@@ -81,7 +81,7 @@ const AvatarFormComponent = () => {
                   </option>
                   {voiceOptions.map((option) => (
                     <option key={option.id} value={option.id}>
-                      {option.path}
+                      {option.name}
                     </option>
                   ))}
                 </select>

@@ -398,6 +398,11 @@ select{
   padding: 1%;
 }
 
+.fullvidform hr{
+  width: 290px;
+
+}
+
 
 .viddie-banner{
  
@@ -429,6 +434,8 @@ align-items: center;
 }
 
 
+
+
 .title-label{
   font-size: 34px;
   margin-right: 30px;
@@ -440,6 +447,12 @@ align-items: center;
 }
 
 .vidcontform{
-  margin-top: 100px;
-  margin-bottom: -93px;
+ 
+  margin-bottom: -75px;
+}
+
+
+.intro_video{
+  width: 60%;
+
 }

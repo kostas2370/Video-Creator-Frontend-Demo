@@ -4,12 +4,21 @@ import { request } from "./apicalls";
 import axios from "axios";
 import { API_BASE_URL } from "./apicalls";
 import Scene from "./scene";
+import { MEDIA_URL } from "./apicalls";
+import SelectedVideo from "./selected_vid";
+import Dropbox from "./dropbox_comp";
 
 const FullVideoComponent = (props) => {
   const { video } = useParams();
   const [currentvideo, setCurrentvideo] = useState("");
   const [avatar, setAvatar] = useState(null);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [selectedIntro, setSelectedIntro] = useState(null);
+  const [Intros, setIntros] = useState(null);
+
+  const [selectedOutro, setSelectedOutro] = useState(null);
+  const [Outros, setOutros] = useState(null);
+
   const [loading, setLoading] = useState(false);
 
   const [title, setTitle] = useState("");
@@ -22,6 +31,13 @@ const FullVideoComponent = (props) => {
       const avatat_options = await request("avatars/");
       setAvatar(avatat_options);
       setSelectedAvatar(videos.avatar);
+      const intro_options = await request("intro/");
+      setIntros(intro_options);
+      setSelectedIntro(videos.intro);
+
+      const outro_options = await request("outro/");
+      setOutros(outro_options);
+      setSelectedOutro(videos.outro);
     };
     fetchVideos();
   }, []);
@@ -38,6 +54,25 @@ const FullVideoComponent = (props) => {
     axios.patch(API_BASE_URL + "/video/" + video + "/", {
       avatar: selectedAvatar,
     });
+    alert("Update Success !!");
+  };
+
+  const update_intro = (event) => {
+    event.preventDefault();
+    console.log(selectedIntro);
+    axios.patch(API_BASE_URL + "/video/" + video + "/", {
+      intro: selectedIntro,
+    });
+    alert("Update Success !!");
+  };
+
+  const update_outro = (event) => {
+    event.preventDefault();
+    console.log(selectedIntro);
+    axios.patch(API_BASE_URL + "/video/" + video + "/", {
+      outro: selectedOutro,
+    });
+    alert("Update Success !!");
   };
 
   return (
@@ -62,36 +97,36 @@ const FullVideoComponent = (props) => {
                 </button>
               </form>
 
-              <form
-                onSubmit={update_avatar}
-                className="fullvidform avatar-select-form"
-              >
-                <span className="title-label">Avatar :</span>
-                {!avatar ? (
-                  <p>Loading...</p>
-                ) : (
-                  <select
-                    id="avatar"
-                    onChange={(e) => setSelectedAvatar(e.target.value)}
-                    name="avatar_selection"
-                    value={selectedAvatar}
-                  >
-                    <option key="No avatar" value="no_avatar">
-                      No Avatar
-                    </option>
-                    {avatar.map((avatar) => (
-                      <option key={avatar.name} value={parseInt(avatar.id)}>
-                        {avatar.name}
-                      </option>
-                    ))}
-                  </select>
-                )}
+              <hr className="hrl"></hr>
 
-                <button className="btn-sub" type="submit">
-                  Update
-                </button>
-              </form>
+              <Dropbox
+                label="Intro:"
+                setSelectedValue={setSelectedIntro}
+                value_list={Intros}
+                selected_value={selectedIntro}
+                update_func={update_intro}
+              />
+              <SelectedVideo vid_List={Intros} vid={selectedIntro} />
+              <hr className="hrl"></hr>
+              <Dropbox
+                label="Outro:"
+                setSelectedValue={setSelectedOutro}
+                value_list={Outros}
+                selected_value={selectedOutro}
+                update_func={update_outro}
+              />
+              <SelectedVideo vid_List={Outros} vid={selectedOutro} />
+              <hr className="hrl"></hr>
+
+              <Dropbox
+                label="Avatar:"
+                setSelectedValue={setSelectedAvatar}
+                value_list={avatar}
+                selected_value={selectedAvatar}
+                update_func={update_avatar}
+              />
             </div>
+
             <div className="fullvideo">
               <div className="scene_container">
                 {currentvideo.scenes.map((scene) => {
@@ -108,7 +143,12 @@ const FullVideoComponent = (props) => {
                       e.preventDefault();
                       setLoading(true);
                       axios
-                        .get(API_BASE_URL + "/video/" + video + "/video_regenerate/")
+                        .get(
+                          API_BASE_URL +
+                            "/video/" +
+                            video +
+                            "/video_regenerate/"
+                        )
                         .then((response) => {
                           setLoading(false);
                           alert("Video got regenerated Successfuly");
@@ -123,7 +163,9 @@ const FullVideoComponent = (props) => {
                       e.preventDefault();
                       setLoading(true);
                       axios
-                        .get(API_BASE_URL + "/video/" + video + "/render_video/")
+                        .get(
+                          API_BASE_URL + "/video/" + video + "/render_video/"
+                        )
                         .then((response) => {
                           setLoading(false);
                           alert("Video got rendered Successfuly");
