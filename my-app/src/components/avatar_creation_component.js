@@ -42,6 +42,7 @@ const AvatarFormComponent = () => {
     axios
       .post("http://localhost:8000/api/avatars/", formData)
       .then((response) => {
+        alert("Created avatar !")
         setLoading(false);
         setName("");
       });

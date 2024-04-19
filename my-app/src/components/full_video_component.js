@@ -15,12 +15,9 @@ const FullVideoComponent = (props) => {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [selectedIntro, setSelectedIntro] = useState(null);
   const [Intros, setIntros] = useState(null);
-
   const [selectedOutro, setSelectedOutro] = useState(null);
   const [Outros, setOutros] = useState(null);
-
   const [loading, setLoading] = useState(false);
-
   const [title, setTitle] = useState("");
 
   useEffect(() => {

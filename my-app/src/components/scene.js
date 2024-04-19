@@ -46,7 +46,7 @@ function Scene({ scene }) {
     const formData = new FormData();
     formData.append("image", file);
 
-    let url = API_BASE_URL + + "/scene/" + scene.id + "/";
+    let url = API_BASE_URL  + "/scene/" + scene.id + "/change_image_scene/";
     if (scene.scene_image.id) {
       url = url + "?scene_image=" + scene.scene_image.id;
     }
