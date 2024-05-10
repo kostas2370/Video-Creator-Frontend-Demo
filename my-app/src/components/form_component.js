@@ -8,7 +8,7 @@ const FormComponent = () => {
     avatar_selection: "no_avatar",
     message: "",
     target_audience:"",
-    images: "webscrap",
+    images: "WEB",
     gpt_model: "gpt-4",
     style: "natural",
     music:""
@@ -136,7 +136,7 @@ const FormComponent = () => {
         <option key="WEB" value="WEB">
           Web
         </option>
-        <option key="DALL-E" value="DALL-E">
+        <option key="AI" value="AI">
           DALL E
         </option>
 
